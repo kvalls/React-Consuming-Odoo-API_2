@@ -33,39 +33,9 @@ class business_proyecto(models.Model):
 
     companies = fields.Many2one("business.business", string="Company", ondelete="cascade")
 
-class business_tasks(models.Model):
+class business_task(models.Model):
     _name = 'project.task'
     _inherit = 'project.task'
-
-
-class ProjectTaskType(models.Model):
-    _name = 'project.task.type'
-    _description = 'Task Stage'
-    _order = 'sequence, id'
-
-    def _get_default_project_ids(self):
-        default_project_id = self.env.context.get('default_project_id')
-        return [default_project_id] if default_project_id else None
-
-    active = fields.Boolean('Active', default=True)
-    name = fields.Char(string='Stage Name', required=True, translate=True)
-    description = fields.Text(translate=True)
-    sequence = fields.Integer(default=1)
-    project_ids = fields.Many2many('project.project', 'project_task_type_rel', 'type_id', 'project_id', string='Projects',
-        default=_get_default_project_ids)
-    legend_blocked = fields.Char(
-        'Red Kanban Label', default=lambda s: _('Blocked'), translate=True, required=True,
-        help='Override the default value displayed for the blocked state for kanban selection, when the task or issue is in that stage.')
-    legend_done = fields.Char(
-        'Green Kanban Label', default=lambda s: _('Ready'), translate=True, required=True,
-        help='Override the default value displayed for the done state for kanban selection, when the task or issue is in that stage.')
-    legend_normal = fields.Char(
-        'Grey Kanban Label', default=lambda s: _('In Progress'), translate=True, required=True,
-        help='Override the default value displayed for the normal state for kanban selection, when the task or issue is in that stage.')
-
-
-class Task(models.Model):
-    _name = "project.task"
     _description = "Task"
     _date_name = "date_assign"
     _inherit = ['portal.mixin', 'mail.thread.cc', 'mail.activity.mixin', 'rating.mixin']
@@ -114,3 +84,33 @@ class Task(models.Model):
         ('done', 'Ready'),
         ('blocked', 'Blocked')], string='Kanban State',
         copy=False, default='normal', required=True)
+
+class business_task_type(models.Model):
+    _name = 'project.task.type'
+    _inherit = 'project.task.type'
+    _description = 'Task Stage'
+    _order = 'sequence, id'
+
+    def _get_default_project_ids(self):
+        default_project_id = self.env.context.get('default_project_id')
+        return [default_project_id] if default_project_id else None
+
+    active = fields.Boolean('Active', default=True)
+    name = fields.Char(string='Stage Name', required=True, translate=True)
+    description = fields.Text(translate=True)
+    sequence = fields.Integer(default=1)
+    project_ids = fields.Many2many('project.project', 'project_task_type_rel', 'type_id', 'project_id', string='Projects',
+        default=_get_default_project_ids)
+    legend_blocked = fields.Char(
+        'Red Kanban Label', default=lambda s: _('Blocked'), translate=True, required=True,
+        help='Override the default value displayed for the blocked state for kanban selection, when the task or issue is in that stage.')
+    legend_done = fields.Char(
+        'Green Kanban Label', default=lambda s: _('Ready'), translate=True, required=True,
+        help='Override the default value displayed for the done state for kanban selection, when the task or issue is in that stage.')
+    legend_normal = fields.Char(
+        'Grey Kanban Label', default=lambda s: _('In Progress'), translate=True, required=True,
+        help='Override the default value displayed for the normal state for kanban selection, when the task or issue is in that stage.')
+
+
+
+    
