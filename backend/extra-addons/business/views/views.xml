@@ -1,0 +1,72 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <!-- BUSINESS PREVIEW -->
+    <record model="ir.ui.view" id="business.business_tree" >
+      <field name="name">business.business.tree</field>
+      <field name="model">business.business</field>
+      <field name="arch" type="xml" >
+        <tree>
+          <field name="name" groups="business.project_manager, business.analyst"/>
+          <field name="email" groups="business.project_manager, business.analyst"/>
+          <field name="phone_number" groups="business.project_manager, business.analyst"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- BUSINESS VIEW -->
+    <record model="ir.ui.view" id="business.business_form">
+      <field name="name">business.business.form</field>
+      <field name="model">business.business</field>
+      <field name="arch" type="xml">
+        <form>
+          <group id="group1" colspan="2" col="2">
+            <field name="image" widget="image" width="300px" height="300px"/>
+            <field name="name" required="1"/>
+            <field name="email" required="1"/>
+            <field name="phone_number" required="1"/>
+            <field name="sales" groups="business.project_manager"/>
+            <field name="customers" groups="business.project_manager"/>
+            <field name="conversion_rate" groups="business.project_manager"/>
+            <field name="project">
+              <tree>
+                <field name="name"/>
+                <field name="description"/>
+              </tree>
+            </field>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <!-- BUSINESS ACTIONS -->
+    <record model="ir.actions.act_window" id="business.business_action_window">
+      <field name="name">Business</field>
+      <field name="res_model">business.business</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="project_view_form_inherit" model="ir.ui.view">
+      <field name="name">project.project.view.inherit</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"></field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="companies" />
+        </xpath>
+      </field>
+    </record>
+
+    <!-- BUSINESS MAIN MENU -->
+    <menuitem name="Business" id="business.menu_root" action="business.business_action_window"/>
+
+    <!-- BUSINESS SUBMENU -->
+    <menuitem name="Tasks" id="menu_project_management_tasks" parent="business.menu_root" action="project.action_view_all_task" sequence="3" />
+
+-->
+  </data>
+</odoo>

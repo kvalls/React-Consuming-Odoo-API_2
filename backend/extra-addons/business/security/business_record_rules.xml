@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- RECORD RULES -->
+    <!-- <record model="ir.rule" id="business_programmer_tasks">
+        <field name="name">Programmer can only edit own tasks</field>
+        <field name="model_id" ref="model_business_business" />
+        <field name="domain_force">[('usuario','=','user.id')]</field>
+        <field name="groups" eval="[(4, ref('programmer'))]"></field>
+    </record> -->
+</odoo>

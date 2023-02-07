@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_business_business_jefe,business.business.project_manager,model_business_business,business.project_manager,1,1,1,1
+
+access_business_business_analyst,business.business.analyst,model_business_business,business.analyst,1,0,0,0
+
+access_business_business_programmer,business.business.programmer,model_business_business,business.programmer,1,0,0,0
+
+access_project_project,project.project,model_project_project,business.project_programmer,1,0,0,0
+access_project_task_type_project_user,project.task.type.project.user,model_business_business,business.project_programmer,1,0,0,0
+access_project_task,project.task,model_project_task,business.project_programmer,1,1,0,0
+access_partner_task_user,base.res.partner user,base.model_res_partner,business.project_programmer,1,0,0,0
+access_resource_calendar,project.resource_calendar user,resource.model_resource_calendar,business.project_programmer,1,0,0,0
+access_resource_calendar_attendance,project.resource_calendar_attendance user,resource.model_resource_calendar_attendance,business.project_programmer,1,0,0,0
+access_resource_calendar_leaves_user,resource.calendar.leaves user,resource.model_resource_calendar_leaves,business.project_programmer,1,1,1,1
+access_account_analytic_account_user,account.analytic.account,analytic.model_account_analytic_account,business.project_programmer,1,0,0,0
+access_project_task_recurrence,project.task.recurrence,model_business_business,business.project_programmer,1,0,0,0

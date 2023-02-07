@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <!-- GROUPS/ROLES -->
+
+        <!-- PROJECT MANAGER -->
+        <record id="project_manager" model="res.groups">
+            <field name="name">Business/Project Manager</field>
+            <field name="comment">Can manage everything.</field>
+        </record>
+
+        <!-- ANALYST -->
+        <record id="analyst" model="res.groups">
+            <field name="name">Business/Analyst</field>
+            <field name="comment">Can only query companies/projects and fully manage their own tasks.</field>
+        </record>
+
+        <!-- PROGRAMMER -->
+        <record id="programmer" model="res.groups">
+            <field name="name">Business/Programmer</field>
+            <field name="comment">Only modifies tasks.</field>
+        </record>
+
+        <!-- PROGRAMMER IN PROJECT -->
+        <record id="project_programmer" model="res.groups">
+            <field name="name">Programmer</field>
+            <field name="comment">Only modifies tasks.</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="base.module_category_services_project"/>
+        </record>
+
+        <!-- Assigns Administrator to the Project Manager group-->
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('business.project_manager'))]"/>
+        </record>
+    </data>
+</odoo> 
