@@ -37,11 +37,11 @@ class business_task(models.Model):
     _name = 'project.task'
     _inherit = 'project.task'
     _description = "Task"
-    _date_name = "date_assign"
-    _inherit = ['portal.mixin', 'mail.thread.cc', 'mail.activity.mixin', 'rating.mixin']
+    _order = "priority desc, sequence, id desc"
+    # _inherit = ['portal.mixin', 'mail.thread.cc', 'mail.activity.mixin', 'rating.mixin']
     _mail_post_access = 'read'
     _order = "priority desc, sequence, id desc"
-    _check_company_auto = True
+    _check_company_auto = True    
 
     def _get_default_stage_id(self):
         """ Gives default stage_id """
@@ -83,7 +83,8 @@ class business_task(models.Model):
         ('normal', 'In Progress'),
         ('done', 'Ready'),
         ('blocked', 'Blocked')], string='Kanban State',
-        copy=False, default='normal', required=True)
+        copy=False, default='normal', required=True) 
+
 
 class business_task_type(models.Model):
     _name = 'project.task.type'
@@ -110,7 +111,6 @@ class business_task_type(models.Model):
     legend_normal = fields.Char(
         'Grey Kanban Label', default=lambda s: _('In Progress'), translate=True, required=True,
         help='Override the default value displayed for the normal state for kanban selection, when the task or issue is in that stage.')
-
 
 
     
