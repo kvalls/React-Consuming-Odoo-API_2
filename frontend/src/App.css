@@ -1,24 +1,46 @@
-.list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+.app-container {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+.task-logo {
+  width: 30%;
 }
 
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+.task-logo img {
+  width: 100px;
 }
 
-.business-logo {
-  width: 2em;
+.navbar-nav {
+  font-size: 1.2rem;
 }
 
-.business-logo img {
-  width: 100%;
-  border-radius: 50%;
+.nav-link {
+  padding: 1rem;
+}
+
+.nav-link:hover {
+  background-color: #343a40;
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem;
+  }
+
+  .navbar-nav {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
 }

@@ -24,6 +24,7 @@
         'reports/business_report_view.xml',
         'security/business_record_rules.xml',
         'data/project_tags_data.xml',
+        'data/project_task_type.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

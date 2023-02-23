@@ -15,7 +15,95 @@ const getAll = () => {
 
   const config = {
     method: 'POST',
-    url: '/api/business/getAll',
+    url: '/api/tasks/getAll',
+    headers: {
+      'Content-Type': 'application/json',
+      "X-Openerp-Session-Id": session_id,
+    },
+    data: data
+  };
+
+  return axios(config);
+};
+
+const getAllUsers = () => {
+  const session_id = getSessionId();
+
+  const data = JSON.stringify({
+    "jsonrpc": "2.0",
+    "params": {
+    }
+  });
+
+  const config = {
+    method: 'POST',
+    url: '/api/tasks/getAllUsers',
+    headers: {
+      'Content-Type': 'application/json',
+      "X-Openerp-Session-Id": session_id,
+    },
+    data: data
+  };
+
+  return axios(config);
+};
+
+const getAllStages = () => {
+  const session_id = getSessionId();
+
+  const data = JSON.stringify({
+    "jsonrpc": "2.0",
+    "params": {
+    }
+  });
+
+  const config = {
+    method: 'POST',
+    url: '/api/tasks/getAllStages',
+    headers: {
+      'Content-Type': 'application/json',
+      "X-Openerp-Session-Id": session_id,
+    },
+    data: data
+  };
+
+  return axios(config);
+};
+
+const getAllProjects = () => {
+  const session_id = getSessionId();
+
+  const data = JSON.stringify({
+    "jsonrpc": "2.0",
+    "params": {
+    }
+  });
+
+  const config = {
+    method: 'POST',
+    url: '/api/tasks/getAllProjects',
+    headers: {
+      'Content-Type': 'application/json',
+      "X-Openerp-Session-Id": session_id,
+    },
+    data: data
+  };
+
+  return axios(config);
+};
+
+const getTasksFromProjects = id => {
+  const session_id = getSessionId();
+
+  const data = JSON.stringify({
+    "jsonrpc": "2.0",
+    "params": {
+    }
+  });
+
+  const config = {
+    method: 'POST',
+    url: `/api/tasks/getAllProjects/${id}`,
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -37,7 +125,7 @@ const get = id => {
 
   const config = {
     method: 'POST',
-    url: `/api/business/get/${id}`,
+    url: `/api/tasks/get/${id}`,
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -48,7 +136,7 @@ const get = id => {
   return axios(config);
 };
 
-const findByName = name => {
+const findByTask = name => {
   const session_id = getSessionId();
 
   const data = JSON.stringify({
@@ -62,7 +150,7 @@ const findByName = name => {
 
   const config = {
     method: 'POST',
-    url: `/api/business/findByName`,
+    url: `/api/tasks/findByTask`,
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -81,19 +169,18 @@ const create = data => {
     "params": {
       "data": {
         "name": data.name,
-        "image": data.image,
-        "email": data.email,
-        "phone_number": data.phone_number,
-        "sales": data.sales,
-        "customers": data.customers,
-        "conversion_rate": data.conversion_rate,
+        "user_id": +data.user_id,
+        "project_id": +data.project_id,
+        "stage_id": +data.stage_id,
+        "description": data.description,
+        "kanban_state": data.kanban_state
       }
     }
   });
 
   var config = {
     method: 'POST',
-    url: '/api/business/create',
+    url: '/api/tasks/create',
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -112,19 +199,18 @@ const update = (id, data) => {
     "params": {
       "data": {
         "name": data.name,
-        "image": data.image,
-        "email": data.email,
-        "phone_number": data.phone_number,
-        "sales": data.sales,
-        "customers": data.customers,
-        "conversion_rate": data.conversion_rate,
+        "user_id": +data.user_id,
+        "project_id": +data.project_id,
+        "stage_id": +data.stage_id,
+        "description": data.description,
+        "kanban_state": data.kanban_state
       }
     }
   });
 
   var config = {
     method: 'POST',
-    url: `/api/business/update/${id}`,
+    url: `/api/tasks/update/${id}`,
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -146,7 +232,7 @@ const remove = id => {
 
   var config = {
     method: 'POST',
-    url: `/api/business/remove/${id}`,
+    url: `/api/tasks/remove/${id}`,
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -168,7 +254,7 @@ const removeAll = () => {
 
   var config = {
     method: 'POST',
-    url: `/api/business/removeAll`,
+    url: `/api/tasks/removeAll`,
     headers: {
       'Content-Type': 'application/json',
       "X-Openerp-Session-Id": session_id,
@@ -202,15 +288,19 @@ const initSession = () => {
   return axios(config);
 };
 
-const BusinessService = {
+const TaskService = {
   getAll,
   get,
   create,
   update,
   remove,
   removeAll,
-  findByName,
-  initSession
+  findByTask,
+  initSession,
+  getAllUsers,
+  getAllStages,
+  getAllProjects,
+  getTasksFromProjects
 };
 
-export default BusinessService;
+export default TaskService;

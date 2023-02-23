@@ -1,0 +1,83 @@
+.edit-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.edit-form h4 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%231abc9c' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 8px 10px;
+  padding-right: 20px;
+}
+
+.edit-form button[type="submit"] {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.edit-form button {
+  margin-top: 20px;
+}
+
+.edit-form p {
+  margin-top: 10px;
+  color: #28a745;
+}
+
+.edit-form .badge {
+  font-size: 15px;
+  font-weight: normal;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-form .badge-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.edit-form .badge-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.edit-form .form-control:invalid {
+  border-color: #dc3545;
+}
+
+.edit-form .form-control:focus:invalid {
+  box-shadow: none;
+}
