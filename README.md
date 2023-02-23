@@ -1,7 +1,7 @@
 # React-Consuming-Odoo-API_2
 Odoo-consuming React application.
 
-# Evaluation criteria
+# Documentation
 * Projects must have 5 stages, which must be created automatically when creating a new project: (0.5 points)
   * Not Started, In Progress, Blocked, Finished & Reviewed.
     ![image](https://user-images.githubusercontent.com/103140108/220961970-7c44ea23-1af0-4847-8433-ea93c049f2e9.png)
